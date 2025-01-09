@@ -31,11 +31,11 @@ class CategoryController extends Controller
         $request->validate([
             'first_name'=>'required|string|max:255',
             'last_name'=>'required|string|max:255',
-            'gender'=>'required|string|max:10',
-            'email'=>'required|string|max:10',
+            'gender'=>'required|string',
+            'email'=>'required|string|unique:categories,email',
             'phone_number'=>'required|string|max:10',
-            'program'=>'required|string|max:10',
-            'residential_stauts'=>'required|string|max:10',
+            'program'=>'required|string',
+            'residential_stauts'=>'required|string',
 
         ]);
         category::create($request->all());
