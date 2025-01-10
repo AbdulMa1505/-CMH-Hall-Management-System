@@ -24,9 +24,25 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($categories as $student)
+                                
+                            
                             <tr>
-                                <td></td>
+                                <td>{{$student->id}}</td>
+                                <td>{{$student->first_name}}</td>
+                                <td>{{$student->last_name}}</td>
+                                <td>{{$student->gender}}</td>
+                                <td>{{$student->email}}</td>
+                                <td>{{$student->phone_number}}</td>
+                                <td>{{$student->program}}</td>
+                                <td>{{$student->residential_stauts}}</td>
+                                <td>
+                                    <a href="{{route('category.show',$student->id)}}" class="btn btn-info">view</a>
+                                    <a href="{{route('category.edit',$student->id)}}" class="btn btn-success">edit</a>
+                                    <a href="{{route('category.destroy',$student->id)}}" class="btn btn-danger">delete</a>
+                                </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
