@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">
                     <h1 class="text-center">CMH ADMIN PORTAL 
-                        <a href="{{ url('category/create') }}" class="btn btn-danger float-end">BACK</a>
+                        <a href="{{ url('category') }}" class="btn btn-danger float-end">BACK</a>
                     </h1>
                 </div>
                 <div class="card-body">

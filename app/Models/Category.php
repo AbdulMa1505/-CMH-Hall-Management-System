@@ -18,6 +18,6 @@ class Category extends Model
         'email',
         'phone_number',
         'program',
-        'residency',
+        'residential_stauts',
     ];
 }

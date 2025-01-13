@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h1 class="text-center">CMH ADMIN PORTAL <a href="{{url('category/create')}}" class="btn btn-danger float-end">BACK</a></h1>
+                    <h1 class="text-center">CMH ADMIN PORTAL <a href="{{url('category/create')}}" class="btn btn-primary float-end">ADD</a></h1>
                 </div>
                 <div class="card-body">
                     <table class="table table-striped table-bordered">
@@ -37,9 +37,12 @@
                                 <td>{{$student->program}}</td>
                                 <td>{{$student->residential_stauts}}</td>
                                 <td>
-                                    <a href="{{route('category.show',$student->id)}}" class="btn btn-info">view</a>
-                                    <a href="{{route('category.edit',$student->id)}}" class="btn btn-success">edit</a>
-                                    <a href="{{route('category.destroy',$student->id)}}" class="btn btn-danger">delete</a>
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <a href="{{route('category.show',$student->id)}}" class="btn btn-info">view</a>
+                                        <a href="{{route('category.edit',$student->id)}}" class="btn btn-success">edit</a>
+                                        <a href="{{route('category.destroy',$student->id)}}" class="btn btn-danger">delete</a>
+                                      </div>
+                                    
                                 </td>
                             </tr>
                             @endforeach

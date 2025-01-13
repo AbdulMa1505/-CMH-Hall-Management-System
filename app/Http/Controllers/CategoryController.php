@@ -50,7 +50,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('category.show');
+        return view('category.show',compact('category'));
     }
 
     /**
@@ -58,7 +58,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('category.edit');
+
+        return view('category.edit',compact('category'));
     }
 
     /**
@@ -66,7 +67,19 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'first_name'=>'required|string|max:255',
+            'last_name'=>'required|string|max:255',
+            'gender'=>'required|string',
+            'email'=>'required|string|unique:categories,email',
+            'phone_number'=>'required|string|max:10',
+            'program'=>'required|string',
+            'residential_stauts'=>'required|string',
+
+        ]);
+        $category->update($request->all());
+        return redirect('/category')->with('status','record updated successfully');
+        
     }
 
     /**
