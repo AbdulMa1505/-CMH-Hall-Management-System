@@ -11,8 +11,10 @@ class StudentController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('student.index');
+    {   $students=Student::paginate(20);
+        return view('student.index',[
+            'students'=>$students
+        ]);
         // return 'student inde working';
 
         }
@@ -35,7 +37,7 @@ class StudentController extends Controller
             'first_name'=>'required|string|max:255',
             'last_name'=>'required|string|max:255',
             'gender'=>'required|string',
-            'email'=>'required|string|max:255|unique:student,email'.$request->id,
+            'email' => 'required|string|max:255|unique:students,email,' . $request->id,
             'phone_number'=>'required|string|max:255',
             'program'=>'required|string',
             'residential_status'=>'required|string',
@@ -43,7 +45,8 @@ class StudentController extends Controller
             ]
         );
         Student::create($request->all());
-        return redirect('/student')->with('rcord created successfully');
+        return redirect('/student')->with('success', 'Record created successfully');
+
     }
 
     /**
@@ -51,7 +54,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        return view('student.show');
+        return view('student.show',compact('student'));
     }
 
     /**
@@ -59,15 +62,37 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        return view('student.edit');
+        return view('student.edit',compact('student'));
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Student $student)
-    {
-        return view('student.update');
+    {   $request->validate(
+        [
+        'first_name'=>'required|string|max:255',
+        'last_name'=>'required|string|max:255',
+        'gender'=>'required|string',
+        'email' => 'required|string|max:255',
+        'phone_number'=>'required|string|max:255',
+        'program'=>'required|string',
+        'residential_status'=>'required|string',
+        
+        ]
+    ); 
+    $student->update([
+        'first_name'=>$request->first_name,
+        'last_name'=>$request->last_name,
+        'gender'=>$request->gender,
+        'email'=>$request->email,
+        'phone_number'=>$request->phone_number,
+        'program'=>$request->program,
+        'residential_status'=>$request->residential_status,
+
+    ]);
+     return redirect('/student')->with('success', 'Record updated successfully');
+        
     }
 
     /**
@@ -75,6 +100,7 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        return view('student.destroy');
+        $student->delete();
+        return redirect('/student')->with('success', 'Record deleted successfully');
     }
 }

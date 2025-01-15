@@ -1,11 +1,12 @@
 @extends('layouts.frontend')
+
 @section('content')
-<div class="container">
+<div class="container" style="background-color: black; color: white; min-height: 100vh; padding: 2rem;">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header bg-primary text-white text-center">
-                    <h2>CMH  Management Portal</h2>
+            <div class="card bg-dark text-white">
+                <div class="card-header bg-warning text-black text-center">
+                    <h2>CMH Management Portal</h2>
                     <a href="{{ url('student') }}" class="btn btn-danger float-end">Back</a>
                 </div>
                 <div class="card-body">
@@ -13,17 +14,17 @@
                         @csrf <!-- Included CSRF token for security -->
                         <div class="mb-3">
                             <label for="first_name" class="form-label">First Name</label>
-                            <input type="text" name="first_name" class="form-control" placeholder="Enter your first name" required>
+                            <input type="text" name="first_name" class="form-control bg-dark text-white" placeholder="Enter your first name" required>
                             @error('first_name')<span class="text-danger">({{ $message }})</span>@enderror
                         </div>
                         <div class="mb-3">
                             <label for="last_name" class="form-label">Last Name</label>
-                            <input type="text" name="last_name" class="form-control" placeholder="Enter your last name" required>
+                            <input type="text" name="last_name" class="form-control bg-dark text-white" placeholder="Enter your last name" required>
                             @error('last_name')<span class="text-danger">({{ $message }})</span>@enderror
                         </div>
                         <div class="mb-3">
                             <label for="gender" class="form-label">Gender</label>
-                            <select name="gender" class="form-control" required>
+                            <select name="gender" class="form-control bg-dark text-white" required>
                                 <option value="" disabled selected>Select Gender</option>
                                 <option value="female">Female</option>
                                 <option value="male">Male</option>
@@ -32,17 +33,18 @@
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="Enter your email address" required>
+                            <input type="email" name="email" class="form-control bg-dark text-white" placeholder="Enter your email address" required>
                             @error('email')<span class="text-danger">({{ $message }})</span>@enderror
                         </div>
                         <div class="mb-3">
                             <label for="phone_number" class="form-label">Phone Number</label>
-                            <input type="text" name="phone_number" class="form-control" placeholder="Enter your phone number" required>
+                            <input type="text" name="phone_number" class="form-control bg-dark text-white" placeholder="Enter your phone number" required>
                             @error('phone_number')<span class="text-danger">({{ $message }})</span>@enderror
                         </div>
                         <div class="mb-3">
                             <label for="program" class="form-label">Program</label>
-                            <select name="program" class="form-control" required>
+                            <select name="program" class="form-control bg-dark text-white" required>
+                                <option value="" disabled selected>Select Program</option>
                                 <option value="" disabled selected>Select Program</option>
                                 <!-- Faculty of Mining and Minerals Technology -->
                                 <option value="BSc Mining Engineering">BSc Mining Engineering</option>
@@ -80,7 +82,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="residential_status" class="form-label">Residency Status</label>
-                            <select name="residential_status" class="form-control" required>
+                            <select name="residential_status" class="form-control bg-dark text-white" required>
                                 <option value="" disabled selected>Select Residency</option>
                                 <option value="resident">Resident</option>
                                 <option value="non_resident">Non-Resident</option>
@@ -88,7 +90,7 @@
                             @error('residential_status')<span class="text-danger">({{ $message }})</span>@enderror
                         </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">Submit info</button>
+                            <button type="submit" class="btn btn-warning text-black">Submit info</button>
                         </div>
                     </form>
                 </div>
