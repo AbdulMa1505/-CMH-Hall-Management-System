@@ -43,7 +43,7 @@ class StudentController extends Controller
             ]
         );
         Student::create($request->all());
-        return redirect('/student')->back()->with('rcord created successfully');
+        return redirect('/student')->with('rcord created successfully');
     }
 
     /**
